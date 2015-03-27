@@ -1,3 +1,5 @@
-name, date, description
+Anthony Moran, Michael Zbytniewski, 3/27/2015
 
-be sure to include complete details of how to interact with your game, the scoring system, and how to win
+  Interaction with the game by a user is done through the "W" and "S" buttons to move up and down respectively. The scoring system
+is done by giving one point to the player each time they avoid an incoming triangle. A player wins by avoiding 200 consecutive 
+triangles in one run.
