@@ -1,31 +1,47 @@
+<!-- Anthony Moran, Michael Zbytniewski-->
 <!DOCTYPE html>
-<html>
 <head>
 <script id="vertex-shader" type="x-shader/x-vertex">
-attribute vec4 vPosition;
+attribute vec4 a_Position;
+attribute vec4 vColor;
 
-void main()
+//uniform mat4 u_ModelMatrix;
+uniform mat4 projectionMatrix;
+
+varying vec4 fColor;
+
+void
+main()
 {
-  gl_Position = vPosition;
+  gl_Position = projectionMatrix  * a_Position;
+  fColor = vColor;
 }
 </script>
 
 <script id="fragment-shader" type="x-shader/x-fragment">
 precision mediump float;
 
-void main()
+varying vec4 fColor;
+
+void
+main()
 {
-gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 );
+  gl_FragColor = fColor;
+  //gl_FragColor = vec4(1,0.5,0,1);
 }
 </script>
+
 <script type="text/javascript" src="../Common/webgl-utils.js"></script>
 <script type="text/javascript" src="../Common/initShaders.js"></script>
 <script type="text/javascript" src="../Common/MV.js"></script>
-<script type="text/javascript" src="project1.js"></script>
+<script type="text/javascript" src="project.js"></script>
 </head>
+
 <body>
-<canvas id="gl-canvas" width="512" height="512">
-Oops ... your browser doesn't support the HTML5 canvas element
+<h2>Use W and S to move your character up and down while trying to avoid all incoming shapes.  Earn 200 points by avoiding each shape to win the game.</h2>
+<canvas id="gl-canvas" width="1300" height="550">
+  Oops ... your browser doesn't support the HTML5 canvas element
 </canvas>
+<p><span id="showScore"></span><span id="score1"></span></p>
 </body>
 </html>
